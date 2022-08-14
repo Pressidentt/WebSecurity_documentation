@@ -3,36 +3,36 @@ title: "Overview"
 linkTitle: "Overview"
 weight: 1
 description: >
-  Here's where your user finds out if your project is for them.
+ 
 ---
 
-{{% pageinfo %}}
+<!-- {{% pageinfo %}}
 This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
+{{% /pageinfo %}} -->
 
 
-The Overview is where your users find out about your project. Depending on the size of your docset, you can have a separate overview page (like this one) or put your overview contents in the Documentation landing page (like in the Docsy User Guide). 
+<!-- The Overview is where your users find out about your project. Depending on the size of your docset, you can have a separate overview page (like this one) or put your overview contents in the Documentation landing page (like in the Docsy User Guide). 
 
-Try answering these questions for your user in this page:
+Try answering these questions for your user in this page: -->
 
 ## What is it?
 
-Introduce your project, including what it does or lets you do, why you would use it, and its primary goal (and how it achieves it). This should be similar to your README description, though you can go into a little more detail here if you want.
+ #### This is  our list of tips, sort of a roadmap, how we would recommend building web service safely.In this demo we will show, how in practical way, build a web-application, that will face security standarts
+ 
+<!-- ## Which web-stack we will use -->
 
-## Why do I want it?
 
-Help your user know if your project will help them. Useful information can include: 
 
-* **What is it good for?**: What types of problems does your project solve? What are the benefits of using it?
+* **Which web-stack we will use?**: In our case, we will show it on Node JS framework - Nest JS.
 
-* **What is it not good for?**: For example, point out situations that might intuitively seem suited for your project, but aren't for some reason. Also mention known limitations, scaling issues, or anything else that might let your users know if the project is not for them.
+* **Will there be another languages?**: We are looking for doing that in near future.
 
-* **What is it *not yet* good for?**: Highlight any useful features that are coming soon.
+* **Will it be only back-end part?**: For now yes, we do not think that guideline would fit for secure front-end programming.
 
 ## Where should I go next?
 
-Give your users next steps from the Overview. For example:
+
 
 * [Getting Started](/docs/getting-started/): Get started with $project
-* [Examples](/docs/examples/): Check out some example code!
+<!-- * [Examples](/docs/examples/): Check out some example code! -->
 

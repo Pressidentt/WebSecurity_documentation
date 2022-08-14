@@ -1,10 +1,10 @@
 ---
 
-title: "Getting Started"
-linkTitle: "Getting Started"
+title: "Important note"
+linkTitle: "Important note"
 weight: 2
 description: >
-  In this part, we are going to set up everyting.
+  We are not going to show how entirely Nest Js framework works, it is too big and its own documentation does great job with that. What we will show, is how security standarts are applied in that framework.
 ---
 <!-- 
 {{% pageinfo %}}
@@ -21,23 +21,13 @@ Consider using the headings below for your getting started page. You can delete 
 
 
 
-## Installation
-You should have downloaded Node JS [framework](https://nodejs.org/en/). Any IDE.
-Now for Nest, we open terminal and run:
-{{% pageinfo %}}
-npm i -g @nestjs/cli
-{{% /pageinfo %}}
-Create a new project:
-{{% pageinfo %}}
-nest new project-name
-{{% /pageinfo %}}
 
 
 ## Where should I go next?
 
 
 
-* [Important Note](/docs/important-note/): An important note 
+* [Getting Started](/docs/getting-started/): Get started with $project
 
 <!-- 
 ## Setup

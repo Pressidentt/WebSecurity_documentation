@@ -1,16 +1,68 @@
 ---
-title: "Porridge Assessment"
+title: "Session management"
 date: 2017-01-05
 weight: 4
 description: >
-  A short lead description about this content page. It can be **bold** or _italic_ and can be split over multiple paragraphs.
+  In this section we will talk about session management in NestJs and token authentication
 ---
 
+During work time of web-service, multiple number of users are going through it. In order to control each user, to identify we will need session managament.
+
+---
+
+Let's look at *first example*. During one day user can enter our web-site multiple times. We don't want to ask him to enter username and password each time.
+That's why we wil use Bearer token.
+
+---
+We should install Jwt
+
 {{% pageinfo %}}
-This is a placeholder page. Replace it with your own content.
+$ npm install --save @nestjs/passport passport passport-local
+$ npm install --save-dev @types/passport-local
+{{% /pageinfo %}}
+
+---
+Let's have a look at *auth.service async generateToken()* in the given demo.
+ ```js
+    const payload = {email: user.email, id: user.id, roles: user.roles}
+        return {
+            token: this.jwtService.sign(payload, { secret: process.env.PRIVATE_KEY}) }
+``` 
+---
+Using sign function, we obtain generated Bearer token.
+
+{{% pageinfo %}}
+P.S second argument in that function is our private_key, it is like the number in hash function, you need to write random string for private key in .env file
+{{% /pageinfo %}}
+
+---
+
+Now since we generate token, for each method, which should be private for each user, we will ask that token, which will identify the user.
+
+---
+
+*Second* example. For example user wants to update his profile. If we had no token, user would 
+be able to change  anyone's profile. But since we have:
+
+---
+Go to *user.controller to updateProfile()*
+```js
+    @UseGuards(JwtAuthGuard)
+    @ApiResponse({status: 200})
+    @Post('/updateProfile')
+    updateProfile(@Client('id') userid:number, @Body() dto: UpdateProfileDto) {
+        return this.usersService.profile_update(dto, userid);
+    }
+```
+As you can see we are using JwtAuthGuard decorator, which will require from user his bearer token, and will change profile data exactly for that user.
+
+---
+{{% pageinfo %}}
+@Client is additional decorator, which finds unic user id based on received token.
 {{% /pageinfo %}}
 
 
+<!-- 
 Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://gohugo.io) should be blue with no underlines (unless hovered over).
 
 There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade. Yuccie prism four dollar toast tbh cardigan iPhone, tumblr listicle live-edge VHS. Pug lyft normcore hot chicken biodiesel, actually keffiyeh thundercats photo booth pour-over twee fam food truck microdosing banh mi. Vice activated charcoal raclette unicorn live-edge post-ironic. Heirloom vexillologist coloring book, beard deep v letterpress echo park humblebrag tilde.
@@ -158,21 +210,6 @@ bar := "foo";
 
 Code can also use syntax highlighting.
 
-```go
-func main() {
-  input := `var foo = "bar";`
-
-  lexer := lexers.Get("javascript")
-  iterator, _ := lexer.Tokenise(nil, input)
-  style := styles.Get("github")
-  formatter := html.New(html.WithLineNumbers())
-
-  var buff bytes.Buffer
-  formatter.Format(&buff, style, iterator)
-
-  fmt.Println(buff.String())
-}
-```
 
 ```
 Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
@@ -236,4 +273,4 @@ Stumptown PBR&B keytar plaid street art, forage XOXO pitchfork selvage affogato 
 
 ```
 This is the final element on the page and there should be no margin below this.
-```
+``` -->
